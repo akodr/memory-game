@@ -55,9 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const grid = document.querySelector('.grid')
   const resultDisplay = document.querySelector('#result')
+  const missDisplay = document.querySelector('#miss')
   let cardsChosen = []
   let cardsChosenId = []
   let cardsWon = []
+  var misses = 0
 
   //create your board
   function createBoard() {
@@ -92,10 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
       alert('Sorry, try again')
+      misses = misses + 1
     }
     cardsChosen = []
     cardsChosenId = []
     resultDisplay.textContent = cardsWon.length
+    missDisplay.textContent = misses
     if  (cardsWon.length === cardArray.length/2) {
       resultDisplay.textContent = 'Congratulations! You found them all!'
     }
